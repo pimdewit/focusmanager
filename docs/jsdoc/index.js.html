@@ -1,0 +1,232 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>index.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<link type="text/css" rel="stylesheet" href="../documentation.css">
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"YYYY MMM Do","systemName":"FocusManager","systemSummary":"A utility class that aides with computational focus.","systemLogo":"","systemColor":"","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"","copyright":"© 2018","linenums":true,"collapseSymbols":true,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":true,"showTableOfContents":true,"showAccessFilter":false,"analytics":null,"methodHeadingReturns":true,"sort":"linenum, longname, version, since","search":true,"favicon":null,"stylesheets":["../documentation.css"],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					FocusManager
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">index.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @fileoverview
+ * A utility class that aides with computational focus.
+ *
+ * The main motivation for creating such a module comes from `inert` and its inconvenient way
+ *    of intentional "focus-trapping" for e.g a dialog or drawer. On several projects I found
+ *    myself creating an array of different sections of the site only to give them an attribute.
+ *    Hopefully this class helps with that. Alongside that it has some common a11y functions.
+ *
+ * @example
+ * HTML:
+ * &lt;nav data-focus-section="topbar">&lt;/nav>
+ * &lt;main   data-focus-section="main">&lt;/main>
+ * &lt;dialog data-focus-section="mydialog">&lt;/dialog>
+ *
+ * JS:
+ * const fm = new FocusManager();
+ * fm.rejectFocusToAllSections();
+ * fm.allowFocusToSection('mydialog');
+ *
+ */
+
+import {
+  ATTRIBUTES,
+  focusable,
+  isHidden,
+} from './utilities';
+
+
+/**
+ * A utility class that aides with computational focus.
+ */
+class FocusManager {
+  /**
+   * Set up all members.
+   */
+  constructor() {
+    /**
+     * This object will store all top-level sections of the site for easy access.
+     * @type {?NodeListOf&lt;HTMLElement> | {}}
+     * @private
+     **/
+    this._sections = {};
+
+    /** @type {?NodeListOf&lt;HTMLElement>} */
+    const sections = document.querySelectorAll(ATTRIBUTES.SECTION_SELECTOR);
+
+    sections.forEach((element) => {
+      /** @type {string} */
+      const key = element.dataset.focusSection;
+
+      this._sections[key] = {
+        element,
+        focusable: !isHidden(element),
+      };
+    });
+  }
+
+
+  /**
+   * Return all pre-defined sections of importance.
+   * @return {?NodeListOf&lt;HTMLElement>}
+   */
+  get sections() {
+    return this._sections;
+  }
+
+
+  /**
+   * Add a section.
+   * This should only be used when an important section gets programmatically added to the DOM.
+   * Otherwise you should probably do it through the data attributes.
+   * @param {string} key
+   * @param {HTMLElement} element
+   */
+  addSection(key, element) {
+    this._sections[key] = {
+      element,
+      focusable: !isHidden(element),
+    };
+  }
+
+  /**
+   * Remove a section.
+   * This means that this section will no longer be accessible through the key format.
+   * This could potentially lead to buggy focus-behaviour and should only be used if
+   *    the given section gets removed from the DOM, or changes hierarchically so it isn't
+   *    as important anymore.
+   * @param {string} key
+   */
+  removeSection(key) {
+    delete this._sections[key];
+  }
+
+
+  /**
+   * Reject focus from all important sections.
+   * Useful if you want to give focus to one particular section, e.g a dialog.
+   */
+  rejectFocusToAllSections() {
+    Object.keys(this._sections).forEach((key) => this.rejectFocusToSection(key));
+  }
+
+
+  /**
+   * Reject focus from a section in particular.
+   * @param {string} key
+   */
+  rejectFocusToSection(key) {
+    const {element} = this._sections[key];
+
+    focusable(element, false);
+
+    this._sections[key].focusable = false;
+  }
+
+
+  /**
+   * Allow focus to a specific section.
+   * @param {string} key
+   */
+  allowFocusToSection(key) {
+    const {element} = this._sections[key];
+
+    focusable(element, true);
+
+    this._sections[key].focusable = true;
+  }
+}
+
+export default FocusManager;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="copyright">© 2018</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 2018 Oct 10th using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

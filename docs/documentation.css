@@ -1,0 +1,48 @@
+body,
+.page-header h1,
+.page-header p {
+  color: #111213;
+}
+
+.page-header .ancestors a {
+  color: #111213;
+}
+
+body,
+.page-header {
+  background-color: #f2f3f4;
+}
+
+.page-header {
+  background-color: #e6e9ec;
+}
+
+.page-header,
+.main-content h1,
+.main-content h2 {
+  border: 0;
+}
+
+hr {
+  border-top: 1px solid rgba(255, 255, 255, .1);
+}
+
+.callout {
+  background-color: #fdfdfd;
+}
+
+.signature-attribs,
+.signature-new,
+.signature-type {
+  color: #9fa9b5;
+}
+
+.symbol-title .name-string,
+.symbol-title .signature-param,
+.symbol-title h4.event {
+  color: #8ece2f;
+}
+
+.breadcrumb {
+  background-color: #fcfcfc;
+}

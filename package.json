@@ -1,0 +1,32 @@
+{
+  "name": "@pdw.io/focusmanager",
+  "version": "0.0.1",
+  "description": "A utility class that aides with computational focus.",
+  "main": "index.js",
+  "scripts": {
+    "docs": "jsdoc ./index.js ./utilities.js -d ./docs/jsdoc/ -p -c ./docs/documentation.json -R ./README.md -t ./node_modules/foodoc/template -r"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pimdewit/focusmanager.git"
+  },
+  "keywords": [
+    "focus",
+    "a11y",
+    "accessibility",
+    "computational",
+    "js",
+    "es6",
+    "inert"
+  ],
+  "author": "Pim de Wit <https://pdw.io>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-config-pdw": "^1.0.8",
+    "foodoc": "0.0.9",
+    "jsdoc": "^3.5.5"
+  },
+  "eslintConfig": {
+    "extends": "pdw"
+  }
+}

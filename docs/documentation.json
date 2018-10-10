@@ -1,0 +1,30 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "templates": {
+    "includeDate": true,
+    "dateFormat": "YYYY MMM Do",
+    "systemName": "FocusManager",
+    "systemSummary": "A utility class that aides with computational focus.",
+    "systemLogo": "",
+    "systemColor": "",
+    "copyright": "© 2018",
+    "linenums": true,
+    "collapseSymbols": true,
+    "inverseNav": true,
+    "inlineNav": true,
+    "outputSourceFiles": true,
+    "outputSourcePath": true,
+    "disablePackagePath": true,
+    "methodHeadingReturns": true,
+    "showTableOfContents": true,
+    "showAccessFilter": false,
+    "sort": "linenum, longname, version, since",
+    "stylesheets": ["../documentation.css"],
+    "scripts": []
+  }
+}
