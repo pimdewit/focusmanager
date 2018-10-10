@@ -63,7 +63,11 @@
 		<div class="row">
 			<div class="col-md-9 main-content">
 		<section class="readme-section">
-			<article><h1>FocusManager</h1><h2>Concept</h2><p>A utility class that aides with computational focus.
+			<article><h1>FocusManager</h1><p><strong><a href="https://pimdewit.github.io/focusmanager">DOCS</a></strong></p>
+<h2>Installation</h2><p><code>npm install --save @pdw.io/focusmanager</code>
+or
+<code>yarn add @pdw.io/focusmanager</code></p>
+<h2>Concept</h2><p>A utility class that aides with computational focus.
 The main motivation for creating such a module comes from <code>inert</code> and its inconvenient way of intentional &quot;focus-trapping&quot; for e.g a dialog or drawer. On several projects I found myself creating an array of different sections of the site only to give them an attribute. Hopefully this class helps with that. Alongside that it has some common a11y functions.</p>
 <pre class="prettyprint source lang-html"><code>&lt;nav data-focus-section=&quot;topbar&quot;>&lt;/nav>
 &lt;main data-focus-section=&quot;main&quot;>&lt;/main>
@@ -71,9 +75,10 @@ The main motivation for creating such a module comes from <code>inert</code> and
 const fm = new FocusManager();
 fm.rejectFocusToAllSections();
 fm.allowFocusToSection('mydialog');</code></pre><h2>Utilities</h2><p>There are several utility functions available that could proof useful in your app.</p>
-<pre class="prettyprint source lang-javascript"><code>import * as utilities from 'focusmanager/utilities';
+<pre class="prettyprint source lang-javascript"><code>import * as utilities from '@pdw.io/focusmanager/utilities';
+// Or treeshaking `import {ariaHidden} from '@pdw.io/focusmanager/utilities';`
 
-utilities.ariaHidden(myElement, true);</code></pre></article>
+utilities.ariaHidden(myElement, true);</code></pre><p><strong><a href="https://pimdewit.github.io/focusmanager">DOCS</a></strong></p></article>
 		</section>
 			</div>
 				<div class="col-md-3 side-content">

@@ -1,6 +1,6 @@
 {
   "name": "@pdw.io/focusmanager",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A utility class that aides with computational focus.",
   "main": "index.js",
   "scripts": {

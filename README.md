@@ -2,6 +2,12 @@
 
 **[DOCS](https://pimdewit.github.io/focusmanager)**
 
+## Installation
+
+`npm install --save @pdw.io/focusmanager`
+or
+`yarn add @pdw.io/focusmanager`
+
 ## Concept
 
 A utility class that aides with computational focus.
@@ -26,7 +32,8 @@ fm.allowFocusToSection('mydialog');
 There are several utility functions available that could proof useful in your app.
 
 ```javascript
-import * as utilities from 'focusmanager/utilities';
+import * as utilities from '@pdw.io/focusmanager/utilities';
+// Or treeshaking `import {ariaHidden} from '@pdw.io/focusmanager/utilities';`
 
 utilities.ariaHidden(myElement, true);
 ```

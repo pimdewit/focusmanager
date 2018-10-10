@@ -104,8 +104,9 @@ export function restoreFocus(waitAFrame = false) {
  * @param {boolean} shouldBeFocusable - Whether the element is allowed focus or not.
  */
 export function focusable(element, shouldBeFocusable) {
-  ariaHidden(element, shouldBeFocusable);
-  inert(element, shouldBeFocusable);
+  const giveFocus = !shouldBeFocusable;
+  ariaHidden(element, giveFocus);
+  inert(element, giveFocus);
 }
 
 
