@@ -4,7 +4,7 @@
   "description": "A utility class that aides with computational focus.",
   "main": "index.js",
   "scripts": {
-    "docs": "jsdoc ./index.js ./utilities.js -d ./docs/jsdoc/ -p -c ./docs/documentation.json -R ./README.md -t ./node_modules/foodoc/template -r"
+    "docs": "jsdoc ./index.js ./utilities.js -d ./docs/ -p -c ./documentation.json -R ./README.md -t ./node_modules/foodoc/template -r"
   },
   "repository": {
     "type": "git",

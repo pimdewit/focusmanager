@@ -24,7 +24,7 @@
     "showTableOfContents": true,
     "showAccessFilter": false,
     "sort": "linenum, longname, version, since",
-    "stylesheets": ["../documentation.css"],
+    "stylesheets": ["./documentation.css"],
     "scripts": []
   }
 }

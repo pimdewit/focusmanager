@@ -1,5 +1,7 @@
 # FocusManager
 
+**[DOCS](https://pimdewit.github.io/focusmanager)**
+
 ## Concept
 
 A utility class that aides with computational focus.
@@ -28,3 +30,5 @@ import * as utilities from 'focusmanager/utilities';
 
 utilities.ariaHidden(myElement, true);
 ```
+
+**[DOCS](https://pimdewit.github.io/focusmanager)**
