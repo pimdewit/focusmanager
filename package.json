@@ -21,12 +21,12 @@
   ],
   "author": "Pim de Wit <https://pdw.io>",
   "license": "MIT",
-  "devDependencies": {
-    "eslint-config-pdw": "^1.0.8",
-    "foodoc": "0.0.9",
-    "jsdoc": "^3.5.5"
-  },
   "eslintConfig": {
     "extends": "pdw"
+  },
+  "optionalDependencies": {
+    "eslint-config-pdw": "^1.0.9",
+    "jsdoc": "^3.6.3",
+    "foodoc": "0.0.9"
   }
 }

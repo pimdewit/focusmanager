@@ -1,4 +1,15 @@
+
 # FocusManager
+
+
+**NOTE: This package is made redundant by the new proposal for `document.blockingElements`. Please do not use this library, instead use [`blocking-elements`](https://github.com/PolymerLabs/blocking-elements).**
+---
+---
+---
+
+
+![FocusManager, by Pim de Wit](/.repository/focus-manager.svg)
+
 
 **[DOCS](https://pimdewit.github.io/focusmanager)**
 
